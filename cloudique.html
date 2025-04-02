@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="nl-NL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudique | Smart, secure, and unique!</title>
+    <meta name="description" content="Cloudique: Smart, secure, and unique IT solutions for businesses">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesh">
+    <style>
+        :root {
+            --primary-red: #E30613;
+            --primary-dark: #C00511;
+            --pure-white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+            --section-gray: #F8F8F8;
+        }
+
+        /* Reset alle standaard marges en padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basisstijlen */
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--pure-white);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden; /* Voorkom horizontaal scrollen */
+        }
+
+        .container {
+            width: 100%;
+            padding: 10; /* Verwijder padding aan zijkanten */
+        }
+
+        /* Header - Volledige breedte zonder marges */
+        .header {
+            background-color: var(--primary-red);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            height: 45px;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: var(--pure-white);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links a.active {
+            font-weight: 700;
+        }
+
+        /* Hero Section - Volledige breedte */
+        .hero {
+            position: relative;
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            overflow: hidden;
+            color: var(--pure-white);
+            background: url('images/achtergrond.png') center/cover no-repeat;
+            width: 100%;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 100;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 7000px;
+            position: relative;
+            z-index: 10;
+            padding: 100px;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--pure-white);
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slogan {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 1px 2px 5px rgba(252, 249, 249, 0.5);
+        }
+
+        .hero p {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: var(--pure-white);
+        }
+
+        /* Knoppen */
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--pure-white);
+            color: var(--primary-red);
+            border: 2px solid var(--pure-white);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--pure-white);
+        }
+
+        /* Diensten Section - Volledige breedte */
+        .services {
+            padding: 80px 20px;
+            background-color: var(--section-gray);
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-red);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: var(--pure-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background-color: var(--primary-red);
+            padding: 20px;
+            color: var(--pure-white);
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body p {
+            margin: 0;
+            color: var(--dark-gray);
+        }
+
+        /* Over Ons Section */
+        .about {
+            padding: 80px 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about p {
+            margin-bottom: 20px;
+        }
+
+        /* Footer - Volledige breedte */
+        .footer {
+            background-color: var(--primary-red);
+            color: var(--pure-white);
+            padding: 60px 20px 20px;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-slogan {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-links a {
+            color: var(--pure-white);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-red);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links a {
+                margin: 10px 0;
+                padding: 10px 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .burger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .hero {
+                height: auto;
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .slogan {
+                font-size: 1.4rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Burger menu icon */
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--pure-white);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="navbar">
+            <a class="logo" href="#">
+                <img src="images/wit.png" alt="Cloudique">
+            </a>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#over-ons">Over Ons</a>
+                <a href="#diensten">Diensten</a>
+                <a href="mailto:info@cloudique.nl">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section met achtergrond afbeelding -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Jouw IT-partner voor ondernemers</h1>
+                <div class="slogan">Smart, secure, and unique!</div>
+                <p>Betaalbare, betrouwbare IT-oplossingen voor uw bedrijf</p>
+                <div class="hero-buttons">
+                    <a href="mailto:info@cloudique.nl" class="btn btn-primary">Neem contact op</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diensten Section -->
+    <section id="diensten" class="services">
+        <div class="container">
+            <h2 class="section-title">Onze diensten</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="card-header">
+                        <h3>Cloud & Hosting</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Veilige, flexibele en schaalbare cloudoplossingen voor uw bedrijf
+                            Onze cloudservices zorgen ervoor dat uw bedrijf altijd en overal toegang heeft tot essentiële data en applicaties. Wij bieden veilige hosting, snelle schaalbaarheid en optimale prestaties, zodat u zich kunt concentreren op groei zonder zorgen over uw IT-infrastructuur.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="card-header">
+                        <h3>IT-Beheer</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Professioneel en proactief beheer van uw IT-infrastructuur
+                            Uw IT-omgeving moet betrouwbaar en efficiënt functioneren. Ons team van experts biedt 24/7 monitoring, proactieve ondersteuning en strategisch advies om uw systemen veilig, snel en up-to-date te houden.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="card-header">
+                        <h3>Beveiliging</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Complete beveiligingsoplossingen om uw bedrijf te beschermen
+                            Van geavanceerde firewalls en endpoint security tot versleutelde cloudopslag en proactieve dreigingsdetectie: wij zorgen voor een solide beveiliging van uw bedrijfsdata. Cyberdreigingen evolueren continu, en wij zorgen ervoor dat uw IT-omgeving altijd beschermd is.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="card-header">
+                        <h3>Onderhoud</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>24/7 ondersteuning en preventief onderhoud voor maximale uptime
+                            IT-problemen kunnen uw bedrijfsprocessen ernstig verstoren, daarom bieden wij continue monitoring, snel incidentbeheer en regelmatig onderhoud, zodat uw systemen altijd optimaal presteren.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Over Ons Section -->
+    <section id="over-ons" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Over Cloudique</h2>
+                <p>Cloudique werd opgericht in 2025 met een duidelijke missie: ondernemers voorzien van betaalbare, professionele en toekomstbestendige IT-oplossingen. Wij geloven in een persoonlijke aanpak, waarbij wij samen met u de juiste strategie bepalen om uw bedrijf technologisch te versterken.
+
+                    Bij Cloudique draait alles om eenvoud, veiligheid en efficiëntie. Wij elimineren onnodige complexiteit en bieden maatwerkoplossingen die perfect aansluiten bij uw specifieke behoeften. Of het nu gaat om cloudmigratie, IT-beheer of cybersecurity, wij zorgen ervoor dat technologie een drijvende kracht wordt achter uw succes.
+                    
+                    
+                </p>
+                <p>Mensen staan bij ons op de eerste plaats. Bij Cloudique bent u geen nummertje, maar een gewaardeerde klant met unieke behoeften. Wij geloven in persoonlijk contact, transparante communicatie en een samenwerking op basis van vertrouwen. Ons team staat altijd voor u klaar, denkt met u mee en biedt oplossingen die écht bij uw organisatie passen.</p>
+                <a href="https://www.linkedin.com/company/cloudique/?viewAsMember=true" class="btn btn-primary">Meer over ons</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="images/wit.png" alt="Cloudique">
+            </div>
+            <div class="footer-slogan">Smart, secure, and unique!</div>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#over-ons">Over Ons</a>
+                <a href="#diensten">Diensten</a>
+                <a href="mailto:info@cloudique.nl">Contact</a>
+            </div>
+            <div class="copyright">
+                <p>© 2025 Cloudique - Amsterdam</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobiele navigatie
+        document.addEventListener('DOMContentLoaded', function() {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            
+            burger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+            
+            // Sluit menu wanneer er op een link wordt geklikt
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    burger.classList.remove('active');
+                    nav.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
