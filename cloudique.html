@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="nl-NL">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloudique | Smart, secure, and unique!</title>
     <meta name="description" content="Cloudique: Smart, secure, and unique IT solutions for businesses">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesh">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-red: #E30613;
@@ -37,7 +38,9 @@
 
         .container {
             width: 100%;
-            padding: 10; /* Verwijder padding aan zijkanten */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* Header - Volledige breedte zonder marges */
@@ -57,7 +60,8 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            max-width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
@@ -88,6 +92,61 @@
         .nav-links a.active {
             font-weight: 700;
         }
+        
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            margin-left: 30px;
+        }
+        
+        .language-btn {
+            background: transparent;
+            border: none;
+            color: var(--pure-white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .language-btn img {
+            width: 20px;
+            margin-right: 5px;
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--pure-white);
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 10px 0;
+            min-width: 150px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .language-dropdown.active {
+            display: block;
+        }
+        
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .language-option:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .language-option img {
+            width: 20px;
+            margin-right: 10px;
+        }
 
         /* Hero Section - Volledige breedte */
         .hero {
@@ -96,10 +155,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 80px;
+            margin-top: 85px;
             overflow: hidden;
             color: var(--pure-white);
-            background: url('images/achtergrond.png') center/cover no-repeat;
+            background: url('/api/placeholder/1920/1080') center/cover no-repeat;
             width: 100%;
         }
 
@@ -107,7 +166,7 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 100;
+            left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0,0,0,0.5);
@@ -116,15 +175,15 @@
 
         .hero-content {
             text-align: center;
-            max-width: 7000px;
+            max-width: 800px;
             position: relative;
             z-index: 10;
-            padding: 100px;
+            padding: 20px;
             width: 100%;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: var(--pure-white);
             margin-bottom: 20px;
             font-weight: 800;
@@ -142,7 +201,7 @@
         }
 
         .hero p {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             margin-bottom: 30px;
             font-weight: 600;
             color: var(--pure-white);
@@ -157,6 +216,7 @@
             display: inline-block;
             transition: all 0.3s ease;
             text-align: center;
+            margin: 5px;
         }
 
         .btn-primary {
@@ -170,10 +230,51 @@
             background-color: transparent;
             color: var(--pure-white);
         }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--pure-white);
+            border: 2px solid var(--pure-white);
+            font-weight: 700;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--pure-white);
+            color: var(--primary-red);
+        }
+
+        /* USP Section */
+        .usp-section {
+            padding: 60px 0;
+            background-color: var(--pure-white);
+        }
+        
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .usp-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .usp-icon {
+            color: var(--primary-red);
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .usp-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
 
         /* Diensten Section - Volledige breedte */
         .services {
-            padding: 80px 20px;
+            padding: 80px 0;
             background-color: var(--section-gray);
             text-align: center;
             width: 100%;
@@ -184,6 +285,7 @@
             margin-bottom: 50px;
             color: var(--primary-red);
             position: relative;
+            font-size: 2rem;
         }
 
         .section-title:after {
@@ -199,13 +301,9 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 20px;
         }
 
         .service-card {
@@ -214,6 +312,9 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             overflow: hidden;
             transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
@@ -233,16 +334,24 @@
 
         .card-body {
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .card-body p {
-            margin: 0;
+            margin: 0 0 20px 0;
             color: var(--dark-gray);
+            flex-grow: 1;
+        }
+        
+        .card-footer {
+            padding: 0 20px 20px;
         }
 
         /* Over Ons Section */
         .about {
-            padding: 80px 20px;
+            padding: 80px 0;
             text-align: center;
             width: 100%;
         }
@@ -254,16 +363,192 @@
 
         .about p {
             margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-item {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .value-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-red);
+        }
+        
+        /* Case Studies */
+        .case-studies {
+            padding: 80px 0;
+            background-color: var(--section-gray);
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .case-card {
+            background-color: var(--pure-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .case-image {
+            height: 200px;
+            background-color: #ddd;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .case-content {
+            padding: 20px;
+        }
+        
+        .case-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .case-subtitle {
+            color: var(--primary-red);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--pure-white);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary-red);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .contact-details {
+            flex: 1;
+        }
+        
+        .contact-form {
+            padding: 30px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
         }
 
         /* Footer - Volledige breedte */
         .footer {
             background-color: var(--primary-red);
             color: var(--pure-white);
-            padding: 60px 20px 20px;
+            padding: 60px 0 20px;
             text-align: center;
             margin-top: auto;
             width: 100%;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--pure-white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: var(--pure-white);
+            font-size: 1.2rem;
+            transition: opacity 0.3s;
+        }
+        
+        .social-links a:hover {
+            opacity: 0.8;
         }
 
         .footer-logo img {
@@ -276,23 +561,6 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 20px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .footer-links a {
-            color: var(--pure-white);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
         }
 
         .copyright {
@@ -313,6 +581,7 @@
                 flex-direction: column;
                 padding: 20px 0;
                 box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
             }
             
             .nav-links a {
@@ -331,6 +600,7 @@
 
             .hero {
                 height: auto;
+                min-height: 80vh;
                 padding: 120px 0 80px;
             }
 
@@ -346,10 +616,16 @@
                 flex-direction: column;
                 align-items: center;
             }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
+            
+            .language-selector {
+                position: static;
+                margin: 15px 0;
+            }
+            
+            .language-dropdown {
+                width: 100%;
+                left: 0;
+                right: auto;
             }
         }
 
@@ -385,8 +661,8 @@
     <!-- Header/Navigation -->
     <header class="header">
         <div class="navbar">
-            <a class="logo" href="#">
-                <img src="images/wit.png" alt="Cloudique">
+            <a class="logo" href="index.html">
+                <img src="/api/placeholder/180/60" alt="Cloudique">
             </a>
             <div class="burger">
                 <span></span>
@@ -394,10 +670,37 @@
                 <span></span>
             </div>
             <div class="nav-links">
-                <a href="#" class="active">Home</a>
-                <a href="#over-ons">Over Ons</a>
-                <a href="#diensten">Diensten</a>
-                <a href="mailto:info@cloudique.nl">Contact</a>
+                <a href="index.html" class="active" data-lang="menu_home">Home</a>
+                <a href="about.html" data-lang="menu_about">Over Ons</a>
+                <a href="services.html" data-lang="menu_services">Diensten</a>
+                <a href="cases.html" data-lang="menu_cases">Cases</a>
+                <a href="contact.html" data-lang="menu_contact">Contact</a>
+                <a href="portal.html" data-lang="menu_portal">Klantenportaal</a>
+                
+                <div class="language-selector">
+                    <button class="language-btn">
+                        <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/nl.svg" alt="Nederlands" id="current-lang-flag">
+                        <span id="current-lang">NL</span>
+                    </button>
+                    <div class="language-dropdown">
+                        <div class="language-option" data-lang="nl">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/nl.svg" alt="Nederlands">
+                            <span>Nederlands</span>
+                        </div>
+                        <div class="language-option" data-lang="en">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gb.svg" alt="English">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" data-lang="de">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/de.svg" alt="Deutsch">
+                            <span>Deutsch</span>
+                        </div>
+                        <div class="language-option" data-lang="fr">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/fr.svg" alt="Français">
+                            <span>Français</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -406,11 +709,48 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Jouw IT-partner voor ondernemers</h1>
+                <h1 data-lang="hero_title">Uw IT-partner voor ondernemers</h1>
                 <div class="slogan">Smart, secure, and unique!</div>
-                <p>Betaalbare, betrouwbare IT-oplossingen voor uw bedrijf</p>
+                <p data-lang="hero_subtitle">Betaalbare, betrouwbare IT-oplossingen voor uw bedrijf</p>
                 <div class="hero-buttons">
-                    <a href="mailto:info@cloudique.nl" class="btn btn-primary">Neem contact op</a>
+                    <a href="contact.html" class="btn btn-primary" data-lang="btn_contact">Neem contact op</a>
+                    <a href="services.html" class="btn btn-secondary" data-lang="btn_services">Onze diensten</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- USP Section -->
+    <section class="usp-section">
+        <div class="container">
+            <div class="usp-grid">
+                <div class="usp-item">
+                    <div class="usp-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="usp-title" data-lang="usp1_title">Hoogwaardige beveiliging</h3>
+                    <p data-lang="usp1_text">Geavanceerde beveiligingsoplossingen om uw bedrijfsgegevens optimaal te beschermen tegen cyberdreigingen.</p>
+                </div>
+                <div class="usp-item">
+                    <div class="usp-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="usp-title" data-lang="usp2_title">Cloud-expertise</h3>
+                    <p data-lang="usp2_text">Gecertificeerde cloud-specialisten met jarenlange ervaring in het ontwerpen van schaalbare oplossingen.</p>
+                </div>
+                <div class="usp-item">
+                    <div class="usp-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="usp-title" data-lang="usp3_title">24/7 support</h3>
+                    <p data-lang="usp3_text">Altijd bereikbare helpdesk met korte reactietijden en persoonlijke benadering.</p>
+                </div>
+                <div class="usp-item">
+                    <div class="usp-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="usp-title" data-lang="usp4_title">Groei gericht</h3>
+                    <p data-lang="usp4_text">IT-oplossingen die meegroeien met uw bedrijf, zonder verborgen kosten of complexe upgrades.</p>
                 </div>
             </div>
         </div>
@@ -419,104 +759,82 @@
     <!-- Diensten Section -->
     <section id="diensten" class="services">
         <div class="container">
-            <h2 class="section-title">Onze diensten</h2>
+            <h2 class="section-title" data-lang="services_title">Onze diensten</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="card-header">
-                        <h3>Cloud & Hosting</h3>
+                        <h3 data-lang="service1_title">Cloud & Hosting</h3>
                     </div>
                     <div class="card-body">
-                        <p>Veilige, flexibele en schaalbare cloudoplossingen voor uw bedrijf
-                            Onze cloudservices zorgen ervoor dat uw bedrijf altijd en overal toegang heeft tot essentiële data en applicaties. Wij bieden veilige hosting, snelle schaalbaarheid en optimale prestaties, zodat u zich kunt concentreren op groei zonder zorgen over uw IT-infrastructuur.</p>
+                        <p data-lang="service1_text">Veilige, flexibele en schaalbare cloudoplossingen voor uw bedrijf. Onze cloudservices zorgen ervoor dat uw bedrijf altijd en overal toegang heeft tot essentiële data en applicaties. Wij bieden veilige hosting, snelle schaalbaarheid en optimale prestaties, zodat u zich kunt concentreren op groei zonder zorgen over uw IT-infrastructuur.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="services.html#cloud" class="btn btn-primary" data-lang="btn_more">Meer informatie</a>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="card-header">
-                        <h3>IT-Beheer</h3>
+                        <h3 data-lang="service2_title">IT-Beheer</h3>
                     </div>
                     <div class="card-body">
-                        <p>Professioneel en proactief beheer van uw IT-infrastructuur
-                            Uw IT-omgeving moet betrouwbaar en efficiënt functioneren. Ons team van experts biedt 24/7 monitoring, proactieve ondersteuning en strategisch advies om uw systemen veilig, snel en up-to-date te houden.</p>
+                        <p data-lang="service2_text">Professioneel en proactief beheer van uw IT-infrastructuur. Uw IT-omgeving moet betrouwbaar en efficiënt functioneren. Ons team van experts biedt 24/7 monitoring, proactieve ondersteuning en strategisch advies om uw systemen veilig, snel en up-to-date te houden.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="services.html#itbeheer" class="btn btn-primary" data-lang="btn_more">Meer informatie</a>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="card-header">
-                        <h3>Beveiliging</h3>
+                        <h3 data-lang="service3_title">Beveiliging</h3>
                     </div>
                     <div class="card-body">
-                        <p>Complete beveiligingsoplossingen om uw bedrijf te beschermen
-                            Van geavanceerde firewalls en endpoint security tot versleutelde cloudopslag en proactieve dreigingsdetectie: wij zorgen voor een solide beveiliging van uw bedrijfsdata. Cyberdreigingen evolueren continu, en wij zorgen ervoor dat uw IT-omgeving altijd beschermd is.</p>
+                        <p data-lang="service3_text">Complete beveiligingsoplossingen om uw bedrijf te beschermen. Van geavanceerde firewalls en endpoint security tot versleutelde cloudopslag en proactieve dreigingsdetectie: wij zorgen voor een solide beveiliging van uw bedrijfsdata. Cyberdreigingen evolueren continu, en wij zorgen ervoor dat uw IT-omgeving altijd beschermd is.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="services.html#beveiliging" class="btn btn-primary" data-lang="btn_more">Meer informatie</a>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="card-header">
-                        <h3>Onderhoud</h3>
+                        <h3 data-lang="service4_title">Onderhoud</h3>
                     </div>
                     <div class="card-body">
-                        <p>24/7 ondersteuning en preventief onderhoud voor maximale uptime
-                            IT-problemen kunnen uw bedrijfsprocessen ernstig verstoren, daarom bieden wij continue monitoring, snel incidentbeheer en regelmatig onderhoud, zodat uw systemen altijd optimaal presteren.</p>
+                        <p data-lang="service4_text">24/7 ondersteuning en preventief onderhoud voor maximale uptime. IT-problemen kunnen uw bedrijfsprocessen ernstig verstoren, daarom bieden wij continue monitoring, snel incidentbeheer en regelmatig onderhoud, zodat uw systemen altijd optimaal presteren.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="services.html#onderhoud" class="btn btn-primary" data-lang="btn_more">Meer informatie</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Over Ons Section -->
-    <section id="over-ons" class="about">
+    <!-- Case Studies Section -->
+    <section class="case-studies">
         <div class="container">
-            <div class="about-content">
-                <h2 class="section-title">Over Cloudique</h2>
-                <p>Cloudique werd opgericht in 2025 met een duidelijke missie: ondernemers voorzien van betaalbare, professionele en toekomstbestendige IT-oplossingen. Wij geloven in een persoonlijke aanpak, waarbij wij samen met u de juiste strategie bepalen om uw bedrijf technologisch te versterken.
-
-                    Bij Cloudique draait alles om eenvoud, veiligheid en efficiëntie. Wij elimineren onnodige complexiteit en bieden maatwerkoplossingen die perfect aansluiten bij uw specifieke behoeften. Of het nu gaat om cloudmigratie, IT-beheer of cybersecurity, wij zorgen ervoor dat technologie een drijvende kracht wordt achter uw succes.
-                    
-                    
-                </p>
-                <p>Mensen staan bij ons op de eerste plaats. Bij Cloudique bent u geen nummertje, maar een gewaardeerde klant met unieke behoeften. Wij geloven in persoonlijk contact, transparante communicatie en een samenwerking op basis van vertrouwen. Ons team staat altijd voor u klaar, denkt met u mee en biedt oplossingen die écht bij uw organisatie passen.</p>
-                <a href="https://www.linkedin.com/company/cloudique/?viewAsMember=true" class="btn btn-primary">Meer over ons</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-logo">
-                <img src="images/wit.png" alt="Cloudique">
-            </div>
-            <div class="footer-slogan">Smart, secure, and unique!</div>
-            <div class="footer-links">
-                <a href="#">Home</a>
-                <a href="#over-ons">Over Ons</a>
-                <a href="#diensten">Diensten</a>
-                <a href="mailto:info@cloudique.nl">Contact</a>
-            </div>
-            <div class="copyright">
-                <p>© 2025 Cloudique - Amsterdam</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobiele navigatie
-        document.addEventListener('DOMContentLoaded', function() {
-            const burger = document.querySelector('.burger');
-            const nav = document.querySelector('.nav-links');
-            
-            burger.addEventListener('click', function() {
-                this.classList.toggle('active');
-                nav.classList.toggle('active');
-            });
-            
-            // Sluit menu wanneer er op een link wordt geklikt
-            const navLinks = document.querySelectorAll('.nav-links a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    burger.classList.remove('active');
-                    nav.classList.remove('active');
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+            <h2 class="section-title" data-lang="cases_title">Onze succesverhalen</h2>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="case-image" style="background-image: url('/api/placeholder/600/400')"></div>
+                    <div class="case-content">
+                        <h3 class="case-title" data-lang="case1_title">Cloud migratie voor groothandel</h3>
+                        <div class="case-subtitle" data-lang="case1_subtitle">Logistiek & Distributie</div>
+                        <p data-lang="case1_text">Een volledige migratie naar de cloud voor een internationale groothandel, resulterend in 40% kostenbesparing en verbeterde toegankelijkheid.</p>
+                        <a href="cases.html#case1" class="btn btn-primary" data-lang="btn_read">Lees meer</a>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-image" style="background-image: url('/api/placeholder/600/400')"></div>
+                    <div class="case-content">
+                        <h3 class="case-title" data-lang="case2_title">IT-beveiliging voor financiële dienstverlener</h3>
+                        <div class="case-subtitle" data-lang="case2_subtitle">Financiële sector</div>
+                        <p data-lang="case2_text">Implementatie van een geavanceerd beveiligingssysteem dat voldoet aan alle financiële regelgeving en gevoelige klantgegevens beschermt.</p>
+                        <a href="cases.html#case2" class="btn btn-primary" data-lang="btn_read">Lees meer</a>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-image" style="background-image: url('/api/placeholder/600/400')"></div>
+                    <div class="case-content">
+                        <h3 class="case-title" data-lang="case3_title">IT-infrastructuur voor startup</h3>
+                        <div class="case-subtitle" data-lang="case3_subtitle">Tech & Innovation</div>
+                        <p data-lang="case3_text">Ontwerp en implementatie van een schaalbare IT-infrastructuur die meegroeit met de snelle ontwikkeling van een veel
